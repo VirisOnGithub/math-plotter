@@ -38,20 +38,22 @@
             let minX = document.getElementById('minX').value;
             let maxY = document.getElementById('maxY').value;
             let minY = document.getElementById('minY').value;
-            let fonction = document.getElementById('fonction').value;
+            let fonction = document.getElementById('fonction').value.replace(/x/g, 'x[i]').replace(/y/g, 'y[j]');
+            console.log(fonction);
 
             if (maxX === null || minX === null || maxY === null || minY === null || fonction === null) {
                 console.error('Une ou plusieurs valeurs sont null');
                 return;
             }
 
-            var x = numeric.linspace(eval(minX), eval(maxX), 10);
-            var y = numeric.linspace(eval(minY), eval(maxY), 10);
+            var x = numeric.linspace(eval(minX), eval(maxX), 50);
+            var y = numeric.linspace(eval(minY), eval(maxY), 50);
             var z = new Array(x.length);
             for (var i = 0; i < x.length; i++) {
                 z[i] = new Array(y.length);
                 for (var j = 0; j < y.length; j++) {
                     z[i][j] = eval(fonction);
+                    console.log(z[i][j]);
                 }
             }
         
@@ -62,7 +64,7 @@
                 type: 'surface'
             }];
 
-            var max = Math.max(...z.flat());
+            var max = Math.max(...z.flat()).toFixed(2);
             var min = Math.min(...z.flat()).toFixed(2);
         
             var layout = {
