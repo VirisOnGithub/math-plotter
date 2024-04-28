@@ -24,7 +24,7 @@
     <body>
         <div id='myDiv'></div>
         <div class="container">
-            <input type="text" placeholder="fonction en version latex" id="fonction">
+            <input type="text" placeholder="fonction en version js" id="fonction">
             <input type="number" placeholder="max x" id="maxX">
             <input type="number" placeholder="min x" id="minX">
             <input type="number" placeholder="max y" id="maxY">
@@ -45,8 +45,8 @@
                 return;
             }
 
-            var x = numeric.linspace(minX, maxX, 10);
-            var y = numeric.linspace(minY, maxY, 10);
+            var x = numeric.linspace(eval(minX), eval(maxX), 10);
+            var y = numeric.linspace(eval(minY), eval(maxY), 10);
             var z = new Array(x.length);
             for (var i = 0; i < x.length; i++) {
                 z[i] = new Array(y.length);
